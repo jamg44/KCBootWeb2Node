@@ -7,5 +7,24 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+
+    <h3>Incluir valores</h3>
+    <%= parrafo %>
+
+    <h3>Incluir valores sin escapar</h3>
+    <%- sinEscapar %>
+
+    <h3>Condicional</h3>
+<% if (tiempo.estado) { %>
+    <p><%= tiempo.segundo %> es par</p>
+<% } else { %>
+    <p><%= tiempo.segundo %> es impar</p>
+<% } %>
+
+    <h3>Incluir listas</h3>
+<% users.forEach(function(user) { %>
+    <p><%= user.name %></p>
+<% }) %>
+
   </body>
 </html>
