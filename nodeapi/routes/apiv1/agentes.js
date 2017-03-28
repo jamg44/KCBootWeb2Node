@@ -7,9 +7,31 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Agente = mongoose.model('Agente');
 
+// autenticación con http basic authentication
+const basicAuth = require('../../lib/basicAuth');
+router.use(basicAuth);
+
 // GET - devuelve una lista de agentes
 router.get('/', function(req, res, next) {
-    const query = Agente.list({name: 'Brown'}, function(err, rows) {
+
+    const name = req.query.name;
+    const age = req.query.age;
+    const limit = parseInt(req.query.limit);
+    const skip = parseInt(req.query.skip);
+    const fields = req.query.fields;
+    const sort = req.query.sort;
+
+    const filter = {};
+
+    if (name) {
+        filter.name = name;
+    }
+
+    if (age) {
+        filter.age = age;
+    }
+
+    Agente.list(filter, limit, skip, fields, sort, function(err, rows) {
         if (err) {
             return next(err);
         }

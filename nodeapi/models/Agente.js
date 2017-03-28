@@ -11,8 +11,12 @@ const agenteSchema = mongoose.Schema({
 });
 
 // Creamos un método estático para recuperar agentes paginados
-agenteSchema.statics.list = function(filter, cb) {
+agenteSchema.statics.list = function(filter, limit, skip, fields, sort, cb) {
     const query = Agente.find(filter);
+    query.limit(limit);
+    query.skip(skip);
+    query.select(fields);
+    query.sort(sort);
     query.exec(cb);
 };
 
