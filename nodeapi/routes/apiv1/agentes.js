@@ -8,11 +8,17 @@ const mongoose = require('mongoose');
 const Agente = mongoose.model('Agente');
 
 // autenticación con http basic authentication
-const basicAuth = require('../../lib/basicAuth');
-router.use(basicAuth);
+//const basicAuth = require('../../lib/basicAuth');
+//router.use(basicAuth);
+
+// autenticación con Json Web Token
+const jwtAuth = require('../../lib/jwtAuth');
+router.use(jwtAuth);
 
 // GET - devuelve una lista de agentes
 router.get('/', function(req, res, next) {
+
+    console.log('usuario _id', req.user_id);
 
     const name = req.query.name;
     const age = req.query.age;
