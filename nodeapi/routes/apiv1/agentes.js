@@ -13,7 +13,7 @@ const Agente = mongoose.model('Agente');
 
 // autenticación con Json Web Token
 const jwtAuth = require('../../lib/jwtAuth');
-router.use(jwtAuth);
+// router.use(jwtAuth);
 
 // GET - devuelve una lista de agentes
 router.get('/', function(req, res, next) {

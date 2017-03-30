@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/:id', function(req, res, next) {
+router.get('/:id([0-9]+)', function(req, res, next) {
   const id = req.params.id;
   console.log('req.params', req.params);
   res.send('ok');

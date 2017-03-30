@@ -29,7 +29,11 @@ app.use(function(req, res, next) {
   next();
 });
 
+// paginas
 app.use('/',              require('./routes/index'));
+app.use('/chat',          require('./routes/chat'));
+
+// API
 app.use('/apiv1/agentes', require('./routes/apiv1/agentes'));
 app.use('/apiv1/users',   require('./routes/apiv1/users'));
 
